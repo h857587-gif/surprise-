@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Birthday Surprise 🎉</title>
+
+<style>
+body {
+  text-align: center;
+  background: linear-gradient(to right, #ff758c, #ffb199);
+  font-family: Arial;
+  overflow: hidden;
+}
+
+h1 {
+  margin-top: 70px;
+  color: white;
+}
+
+#runawayBtn {
+  position: absolute;
+  padding: 15px 20px;
+  font-size: 18px;
+  background-color: white;
+  color: #ff4d6d;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#invite {
+  display: none;
+  margin-top: 50px;
+  font-size: 22px;
+  color: white;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.heart {
+  position: absolute;
+  font-size: 24px;
+  animation: float 3s linear infinite;
+}
+
+@keyframes float {
+  from {transform: translateY(0);}
+  to {transform: translateY(-200px);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>امسكي الزر إذا تقدري 😏💖</h1>
+
+<button id="runawayBtn">اضغطيني 😂</button>
+
+<div id="invite">
+  🎂💖  
+  Surpriseeee!!  
+  يا أجمل بنت بالعالم 💕  
+  كل عام وانتي بخير ✨  
+
+  أنتي مدعوة لحفلة عيد ميلادك 🎉  
+  يوم: 10 / 5  
+  الساعة: 8 مساءً  
+
+  مستحيل نحتفل بدونك 😍  
+</div>
+
+<audio id="sound" src="https://www.soundjay.com/button/sounds/button-16.mp3"></audio>
+
+<script>
+let btn = document.getElementById("runawayBtn");
+let sound = document.getElementById("sound");
+
+btn.addEventListener("mouseover", moveButton);
+btn.addEventListener("click", showInvite);
+
+function moveButton() {
+  let x = Math.random() * (window.innerWidth - 120);
+  let y = Math.random() * (window.innerHeight - 60);
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+  sound.play();
+}
+
+function showInvite() {
+  btn.style.display = "none";
+  document.getElementById("invite").style.display = "block";
+  createHearts();
+}
+
+function createHearts() {
+  for(let i = 0; i < 20; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+    document.body.appendChild(heart);
+  }
+}
+</script>
+
+</body>
+</html>
